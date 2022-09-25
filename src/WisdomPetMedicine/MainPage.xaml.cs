@@ -1,4 +1,5 @@
-﻿using WisdomPetMedicine.DataAccess;
+﻿using Microsoft.Maui.Controls.Shapes;
+using WisdomPetMedicine.DataAccess;
 
 namespace WisdomPetMedicine;
 
@@ -9,8 +10,9 @@ public partial class MainPage : ContentPage
 		InitializeComponent();
 	}
 
-	private async void TapGestureRecognizer_Tapped(object sender, EventArgs e)
+	private void TapGestureRecognizer_Tapped(object sender, EventArgs e)
 	{
-		await DisplayAlert("Mensaje", "Tap!", "Ok", "Cancelar");
-	}
+		(sender as Rectangle)?.ScaleTo(2);
+		(sender as Rectangle)?.TranslateTo(200, 200);
+    }
 }

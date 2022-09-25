@@ -11,8 +11,11 @@
             </Ellipse.Fill>
         </Ellipse>
         <Rectangle WidthRequest="100" HeightRequest="80"
-                   Fill="Blue"
-                   />
+                   Fill="Blue">
+            <Rectangle.GestureRecognizers>
+                <TapGestureRecognizer Tapped="TapGestureRecognizer_Tapped" />
+            </Rectangle.GestureRecognizers>
+        </Rectangle>
     </VerticalStackLayout>
 
 </ContentPage>
