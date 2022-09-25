@@ -52,4 +52,10 @@
 	  <PackageReference Include="Microsoft.EntityFrameworkCore.InMemory" Version="6.0.9" />
 	</ItemGroup>
 
+	<ItemGroup>
+	  <MauiXaml Update="Views\AboutPage.xaml">
+	    <Generator>MSBuild:Compile</Generator>
+	  </MauiXaml>
+	</ItemGroup>
+
 </Project>

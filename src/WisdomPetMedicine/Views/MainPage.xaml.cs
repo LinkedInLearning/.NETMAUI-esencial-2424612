@@ -1,6 +1,6 @@
 ﻿using WisdomPetMedicine.DataAccess;
 
-namespace WisdomPetMedicine;
+namespace WisdomPetMedicine.Views;
 
 public partial class MainPage : ContentPage
 {
