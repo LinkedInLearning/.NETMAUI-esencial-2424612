@@ -2,9 +2,9 @@
 
 namespace WisdomPetMedicine.Views;
 
-public partial class MainPage : ContentPage
+public partial class TotalsPage : ContentPage
 {
-	public MainPage()
+	public TotalsPage()
 	{
 		InitializeComponent();
 
