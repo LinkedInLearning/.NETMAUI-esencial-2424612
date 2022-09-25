@@ -8,7 +8,7 @@
             <Style x:Key="MyGridStyle" TargetType="Grid">
                 <Setter Property="Background">
                     <Setter.Value>
-                        <SolidColorBrush Color="LightSteelBlue" />
+                        <SolidColorBrush Color="{AppThemeBinding Light='LightSteelBlue', Dark='DarkBlue'}" />
                     </Setter.Value>
                 </Setter>
                 <Setter Property="Padding" Value="20" />
