@@ -5,6 +5,14 @@
 
     <Grid ColumnDefinitions="*,*"
           RowDefinitions="*,*">
+
+        <Grid.Background>
+            <RadialGradientBrush>
+                <GradientStop Color="Black" Offset="0" />
+                <GradientStop Color="LightGreen" Offset="1" />
+            </RadialGradientBrush>
+        </Grid.Background>
+        
        
         <Label FontSize="30" 
                x:Name="categories" />
