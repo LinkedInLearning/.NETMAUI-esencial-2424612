@@ -3,23 +3,23 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="WisdomPetMedicine.MainPage">
 
-    <Grid ColumnDefinitions="*,*"
-          RowDefinitions="*,*"
-          Style="{StaticResource MyGridStyle}">
-
-        <Grid.GestureRecognizers>
-            <TapGestureRecognizer Tapped="TapGestureRecognizer_Tapped" />
-        </Grid.GestureRecognizers>
-
-        <Label FontSize="30" 
-               x:Name="categories" />
-        <Label FontSize="30" 
-               Grid.Column="1" 
-               x:Name="products" />
-        <Label FontSize="30" 
-               Grid.Row="1"
-               Grid.Column="1"
-               x:Name="clients" />
-    </Grid>
+    <VerticalStackLayout>
+        <Button Text="Botón" />
+        <DatePicker />
+        <Editor Placeholder="Esto es un Editor" HeightRequest="200"  />
+        <Entry Placeholder="Esto es un Entry" />
+        <Label Text="Label" />
+        <Picker>
+            <Picker.Items>
+                <x:String>Uno</x:String>
+                <x:String>Dos</x:String>
+                <x:String>Tres</x:String>
+            </Picker.Items>
+        </Picker>
+        <Stepper Minimum="0" Maximum="10" Increment="1" />
+        <Switch IsToggled="false" />
+        <Slider Minimum="0" Maximum="1" />
+        <TimePicker />
+    </VerticalStackLayout>
 
 </ContentPage>
