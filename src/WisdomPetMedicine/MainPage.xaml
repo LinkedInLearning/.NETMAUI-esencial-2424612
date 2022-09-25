@@ -4,22 +4,15 @@
              x:Class="WisdomPetMedicine.MainPage">
 
     <VerticalStackLayout>
-        <Button Text="Botón" />
-        <DatePicker />
-        <Editor Placeholder="Esto es un Editor" HeightRequest="200"  />
-        <Entry Placeholder="Esto es un Entry" />
-        <Label Text="Label" />
-        <Picker>
-            <Picker.Items>
-                <x:String>Uno</x:String>
-                <x:String>Dos</x:String>
-                <x:String>Tres</x:String>
-            </Picker.Items>
-        </Picker>
-        <Stepper Minimum="0" Maximum="10" Increment="1" />
-        <Switch IsToggled="false" />
-        <Slider Minimum="0" Maximum="1" />
-        <TimePicker />
+        <Ellipse WidthRequest="200"
+                 HeightRequest="200">
+            <Ellipse.Fill>
+                <SolidColorBrush Color="Red" />
+            </Ellipse.Fill>
+        </Ellipse>
+        <Rectangle WidthRequest="100" HeightRequest="80"
+                   Fill="Blue"
+                   />
     </VerticalStackLayout>
 
 </ContentPage>
