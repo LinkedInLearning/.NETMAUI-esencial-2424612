@@ -1,5 +1,4 @@
-﻿using Microsoft.Maui.Controls.Shapes;
-using WisdomPetMedicine.DataAccess;
+﻿using WisdomPetMedicine.DataAccess;
 
 namespace WisdomPetMedicine;
 
@@ -8,11 +7,10 @@ public partial class MainPage : ContentPage
 	public MainPage()
 	{
 		InitializeComponent();
-	}
 
-	private void TapGestureRecognizer_Tapped(object sender, EventArgs e)
-	{
-		(sender as Rectangle)?.ScaleTo(2);
-		(sender as Rectangle)?.TranslateTo(200, 200);
+        var dbContext = new WpmDbContext();
+        categories.Text = dbContext.Categories.Count().ToString();
+        products.Text = dbContext.Products.Count().ToString();
+        clients.Text = dbContext.Clients.Count().ToString();
     }
 }
