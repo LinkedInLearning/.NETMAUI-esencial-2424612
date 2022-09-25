@@ -3,10 +3,18 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="WisdomPetMedicine.MainPage">
 
-    <VerticalStackLayout>
-        <Label FontSize="30"  x:Name="categories" />
-        <Label FontSize="30" x:Name="products" />
-        <Label FontSize="30" x:Name="clients" />
-    </VerticalStackLayout>
+    <Grid ColumnDefinitions="*,*"
+          RowDefinitions="*,*">
+       
+        <Label FontSize="30" 
+               x:Name="categories" />
+        <Label FontSize="30" 
+               Grid.Column="1" 
+               x:Name="products" />
+        <Label FontSize="30" 
+               Grid.Row="1"
+               Grid.Column="1"
+               x:Name="clients" />
+    </Grid>
 
 </ContentPage>
