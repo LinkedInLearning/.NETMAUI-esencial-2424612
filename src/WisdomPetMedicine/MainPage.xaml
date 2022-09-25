@@ -7,6 +7,10 @@
           RowDefinitions="*,*"
           Style="{StaticResource MyGridStyle}">
 
+        <Grid.GestureRecognizers>
+            <TapGestureRecognizer Tapped="TapGestureRecognizer_Tapped" />
+        </Grid.GestureRecognizers>
+
         <Label FontSize="30" 
                x:Name="categories" />
         <Label FontSize="30" 

@@ -13,4 +13,9 @@ public partial class MainPage : ContentPage
 		products.Text = dbContext.Categories.Count().ToString();
 		clients.Text = dbContext.Clients.Count().ToString();
 	}
+
+	private async void TapGestureRecognizer_Tapped(object sender, EventArgs e)
+	{
+		await DisplayAlert("Mensaje", "Tap!", "Ok", "Cancelar");
+	}
 }
