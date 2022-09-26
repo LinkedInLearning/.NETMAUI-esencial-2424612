@@ -5,10 +5,6 @@
              xmlns:vm="clr-namespace:WisdomPetMedicine.ViewModels"
              Title="VisitsPage">
 
-    <ContentPage.BindingContext>
-        <vm:VisitsViewModel RemainingVisits="2" />
-    </ContentPage.BindingContext>
-
     <Grid RowDefinitions="Auto,*">
 
         <Label Text="{Binding Clients.Count, Mode=OneWay}"
