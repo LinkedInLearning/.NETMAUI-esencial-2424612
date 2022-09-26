@@ -10,7 +10,13 @@ public partial class ProductsPage : ContentPage
 		var dbContext = new WpmDbContext();
 		foreach (var item in dbContext.Products)
 		{
-			data.Children.Add(new Label() { Text = item.Name });
+			var btn = new Button() { Text = item.Name };
+			btn.Clicked += async (s, a) =>
+			{
+				var uri = $"{nameof(ProductDetailsPage)}?id={item.Id}";
+                await Shell.Current.GoToAsync(uri);
+			};
+            data.Children.Add(btn);
 		} 
 	}
 }

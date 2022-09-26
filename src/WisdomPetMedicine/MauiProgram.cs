@@ -1,4 +1,5 @@
 ﻿using WisdomPetMedicine.DataAccess;
+using WisdomPetMedicine.Views;
 
 namespace WisdomPetMedicine;
 
@@ -18,6 +19,9 @@ public static class MauiProgram
 		var dbContext = new WpmDbContext();
 		dbContext.Database.EnsureCreated();
 		dbContext.Dispose();
+
+		Routing.RegisterRoute(nameof(ProductDetailsPage), 
+			typeof(ProductDetailsPage));
 
 		return builder.Build();
 	}
