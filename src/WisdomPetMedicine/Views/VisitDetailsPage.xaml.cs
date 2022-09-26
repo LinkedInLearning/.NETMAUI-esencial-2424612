@@ -93,7 +93,7 @@ public class VisitDetailsData : BindableObject
         var db = new WpmDbContext();
         Products = new ObservableCollection<Product>(db.Products);
 
-        AddCommand = new MyCommand(() =>
+        AddCommand = new Command(() =>
         {
             var sale = new Sale(ClientId, SelectedProduct.Id, Quantity);
             Sales.Add(sale);
