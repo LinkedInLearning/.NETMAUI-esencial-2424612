@@ -3,9 +3,12 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              xmlns:local="clr-namespace:WisdomPetMedicine"
              xmlns:data="clr-namespace:WisdomPetMedicine.DataAccess"
+             xmlns:converters="clr-namespace:WisdomPetMedicine.Converters"
              x:Class="WisdomPetMedicine.App">
     <Application.Resources>
         <ResourceDictionary>
+            <converters:PriceToColorConverter x:Key="PriceToColorConverter" />
+            
             <DataTemplate x:Key="ProductDataTemplate" x:DataType="data:Product">
                 <Grid ColumnDefinitions="*,Auto" Padding="4" HeightRequest="80">
                     <VerticalStackLayout VerticalOptions="Center">
@@ -17,9 +20,11 @@
                            VerticalOptions="Center"
                            FontAttributes="Bold"
                            FontAutoScalingEnabled="True"
+                           TextColor="{Binding Price, Converter={StaticResource PriceToColorConverter}}"
                            Text="{Binding Price, StringFormat='{0:C}'}" />
                 </Grid>
             </DataTemplate>
+            
             <Style x:Key="MyGridStyle" TargetType="Grid">
                 <Setter Property="Background">
                     <Setter.Value>
