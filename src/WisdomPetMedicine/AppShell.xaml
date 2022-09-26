@@ -4,9 +4,15 @@
     xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
     xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
     xmlns:views="clr-namespace:WisdomPetMedicine.Views"
+    FlyoutBackdrop="{StaticResource Secondary}"
     Shell.FlyoutBehavior="Flyout">
 
-   
+    <Shell.FlyoutHeader>
+        <Image Source="wpmlogo.png" 
+               WidthRequest="120"
+               Margin="10" />
+    </Shell.FlyoutHeader>
+    
     <ShellContent
         Title="Acerca de..."
         ContentTemplate="{DataTemplate views:AboutPage}"
