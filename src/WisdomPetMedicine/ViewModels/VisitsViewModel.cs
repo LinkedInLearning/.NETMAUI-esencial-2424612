@@ -1,4 +1,5 @@
-﻿using System.Collections.ObjectModel;
+﻿using CommunityToolkit.Mvvm.ComponentModel;
+using System.Collections.ObjectModel;
 using System.ComponentModel;
 using WisdomPetMedicine.DataAccess;
 using WisdomPetMedicine.Services;
@@ -6,55 +7,19 @@ using WisdomPetMedicine.Views;
 
 namespace WisdomPetMedicine.ViewModels;
 
-public class VisitsViewModel : BindableObject
+public partial class VisitsViewModel : ViewModelBase
 {
-    private int remainingVisits;
-
-    public int RemainingVisits
-    {
-        get { return remainingVisits; }
-        set
-        {
-            if (remainingVisits != value)
-            {
-                remainingVisits = value;
-                RaisePropertyChanged();
-            }
-
-        }
-    }
-
-    private ObservableCollection<Client> clients;
-
-    public ObservableCollection<Client> Clients
-    {
-        get { return clients; }
-        set
-        {
-            if (clients != value)
-            {
-                clients = value;
-                RaisePropertyChanged();
-            }
-        }
-    }
-
-    private Client selectedClient;
     private readonly INavigationService navigationService;
 
-    public Client SelectedClient
-    {
-        get { return selectedClient; }
-        set
-        {
-            if (selectedClient != value)
-            {
-                selectedClient = value;
-                RaisePropertyChanged();
-            }
-        }
-    }
+    [ObservableProperty]
+    private int remainingVisits;
 
+    [ObservableProperty]
+    private ObservableCollection<Client> clients;
+
+    [ObservableProperty]
+    private Client selectedClient;
+    
     public VisitsViewModel(INavigationService navigationService)
     {
         var db = new WpmDbContext();

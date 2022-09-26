@@ -1,74 +1,27 @@
 ﻿namespace WisdomPetMedicine.ViewModels;
+
+using CommunityToolkit.Mvvm.ComponentModel;
 using System.Collections.ObjectModel;
 using System.Windows.Input;
 using WisdomPetMedicine.DataAccess;
 using WisdomPetMedicine.Models;
 
-public class VisitDetailsViewModel : BindableObject
+public partial class VisitDetailsViewModel : ViewModelBase
 {
     public int ClientId { get; set; }
 
+    [ObservableProperty]
     private ObservableCollection<Product> products;
 
-    public ObservableCollection<Product> Products
-    {
-        get { return products; }
-        set
-        {
-            if (products != value)
-            {
-                products = value;
-                RaisePropertyChanged();
-            }
-        }
-    }
-
+    [ObservableProperty]
     private Product selectedProduct;
 
-    public Product SelectedProduct
-    {
-        get { return selectedProduct; }
-        set
-        {
-            if (selectedProduct != value)
-            {
-                selectedProduct = value;
-                RaisePropertyChanged();
-            }
-
-        }
-    }
-
+    [ObservableProperty]
     private int quantity;
 
-    public int Quantity
-    {
-        get { return quantity; }
-        set
-        {
-            if (quantity != value)
-            {
-                quantity = value;
-                RaisePropertyChanged();
-            }
-        }
-    }
 
+    [ObservableProperty]
     private ObservableCollection<Sale> sales = new ObservableCollection<Sale>();
-
-    public ObservableCollection<Sale> Sales
-    {
-        get { return sales; }
-        set
-        {
-            if (sales != value)
-            {
-                sales = value;
-                RaisePropertyChanged();
-            }
-        }
-    }
-
 
     public ICommand AddCommand { get; set; }
 
