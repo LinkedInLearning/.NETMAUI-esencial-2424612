@@ -11,8 +11,12 @@
     
     <Grid ColumnDefinitions="*,*">
         <VerticalStackLayout>
-            <Picker ItemsSource="{Binding Products}"
-                    SelectedItem="{Binding SelectedProduct, Mode=TwoWay}" />
+            <CollectionView ItemsSource="{Binding Products}"
+                            SelectedItem="{Binding SelectedProduct, Mode=TwoWay}"
+                            ItemTemplate="{StaticResource ProductDataTemplate}"
+                            SelectionMode="Single"
+                            HeightRequest="300"
+                            />
 
             <HorizontalStackLayout VerticalOptions="Center">
                 <Stepper Minimum="1"
