@@ -58,6 +58,11 @@
 
     </FlyoutItem>
 
+    <ShellContent
+        Title="Visitas"
+        ContentTemplate="{DataTemplate views:VisitsPage}"
+        Route="VisitsPage" />
+
     <MenuItem Text="Abrir página web..."
               Clicked="MenuItem_Clicked"
               />

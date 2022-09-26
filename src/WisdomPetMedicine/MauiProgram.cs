@@ -22,6 +22,8 @@ public static class MauiProgram
 
 		Routing.RegisterRoute(nameof(ProductDetailsPage), 
 			typeof(ProductDetailsPage));
+		Routing.RegisterRoute(nameof(VisitDetailsPage),
+			typeof(VisitDetailsPage));
 
 		return builder.Build();
 	}
