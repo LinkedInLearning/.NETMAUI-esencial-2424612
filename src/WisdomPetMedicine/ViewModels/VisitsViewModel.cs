@@ -1,6 +1,7 @@
 ﻿using System.Collections.ObjectModel;
 using System.ComponentModel;
 using WisdomPetMedicine.DataAccess;
+using WisdomPetMedicine.Services;
 using WisdomPetMedicine.Views;
 
 namespace WisdomPetMedicine.ViewModels;
@@ -39,6 +40,7 @@ public class VisitsViewModel : BindableObject
     }
 
     private Client selectedClient;
+    private readonly INavigationService navigationService;
 
     public Client SelectedClient
     {
@@ -53,11 +55,12 @@ public class VisitsViewModel : BindableObject
         }
     }
 
-    public VisitsViewModel()
+    public VisitsViewModel(INavigationService navigationService)
     {
         var db = new WpmDbContext();
         Clients = new ObservableCollection<Client>(db.Clients);
         PropertyChanged += VisitsData_PropertyChanged;
+        this.navigationService = navigationService;
     }
 
     private async void VisitsData_PropertyChanged(object sender, PropertyChangedEventArgs e)
@@ -66,7 +69,7 @@ public class VisitsViewModel : BindableObject
         {
             var uri
                 = $"{nameof(VisitDetailsPage)}?id={SelectedClient.Id}";
-            await Shell.Current.GoToAsync(uri);
+            await navigationService.GoToAsync(uri);
         }
     }
 }
