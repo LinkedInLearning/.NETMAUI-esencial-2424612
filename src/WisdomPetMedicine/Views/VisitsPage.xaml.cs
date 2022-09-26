@@ -1,4 +1,6 @@
+using System.Collections.ObjectModel;
 using System.ComponentModel;
+using WisdomPetMedicine.DataAccess;
 
 namespace WisdomPetMedicine.Views;
 
@@ -34,4 +36,22 @@ public class VisitsData : BindableObject
 		}
 	}
 
+	private ObservableCollection<Client> clients;
+
+	public ObservableCollection<Client> Clients
+	{
+		get { return clients; }
+		set { 
+			if (clients != value)
+			{
+                clients = value;
+                RaisePropertyChanged();
+            }
+		}
+	}
+	public VisitsData()
+	{
+		var db = new WpmDbContext();
+		Clients = new ObservableCollection<Client>(db.Clients);
+	}
 }
