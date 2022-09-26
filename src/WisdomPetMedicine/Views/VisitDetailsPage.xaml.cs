@@ -3,6 +3,7 @@ using System.Collections.ObjectModel;
 using System.ComponentModel;
 using System.Windows.Input;
 using WisdomPetMedicine.DataAccess;
+using WisdomPetMedicine.Models;
 
 public partial class VisitDetailsPage : ContentPage, IQueryAttributable
 {
@@ -13,12 +14,16 @@ public partial class VisitDetailsPage : ContentPage, IQueryAttributable
 
 	public void ApplyQueryAttributes(IDictionary<string, object> query)
 	{
-		Title = $"Cliente: {query["id"]}";
+        var clientId = int.Parse(query["id"].ToString());
+        Title = $"Cliente: {clientId}";
+        (BindingContext as VisitDetailsData).ClientId = clientId;
 	}
 }
 
 public class VisitDetailsData : BindableObject
 {
+    public int ClientId { get; set; }
+
     private ObservableCollection<Product> products;
 
     public ObservableCollection<Product> Products
@@ -65,11 +70,33 @@ public class VisitDetailsData : BindableObject
         }
     }
 
+    private ObservableCollection<Sale> sales = new ObservableCollection<Sale>();
+
+    public ObservableCollection<Sale> Sales
+    {
+        get { return sales; }
+        set 
+        { 
+            if (sales != value)
+            {
+                sales = value;
+                RaisePropertyChanged();
+            }
+        }
+    }
+
+
     public ICommand AddCommand { get; set; }
 
     public VisitDetailsData()
     {
         var db = new WpmDbContext();
         Products = new ObservableCollection<Product>(db.Products);
+
+        AddCommand = new MyCommand(() =>
+        {
+            var sale = new Sale(ClientId, SelectedProduct.Id, Quantity);
+            Sales.Add(sale);
+        }, ()=> true);
     }
 }
