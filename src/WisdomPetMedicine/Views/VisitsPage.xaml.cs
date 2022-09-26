@@ -1,3 +1,5 @@
+using System.ComponentModel;
+
 namespace WisdomPetMedicine.Views;
 
 public partial class VisitsPage : ContentPage
@@ -14,7 +16,22 @@ public partial class VisitsPage : ContentPage
 	}
 }
 
-public class VisitsData
+public class VisitsData : BindableObject
 {
-	public int RemainingVisits { get; set; }
+	private int remainingVisits;
+
+	public int RemainingVisits
+	{
+		get { return remainingVisits; }
+		set 
+		{ 
+			if (remainingVisits != value)
+			{
+                remainingVisits = value;
+                RaisePropertyChanged();
+            }
+			
+		}
+	}
+
 }
