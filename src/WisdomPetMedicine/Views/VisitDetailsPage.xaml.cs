@@ -1,6 +1,7 @@
 namespace WisdomPetMedicine.Views;
 using System.Collections.ObjectModel;
 using System.ComponentModel;
+using System.Windows.Input;
 using WisdomPetMedicine.DataAccess;
 
 public partial class VisitDetailsPage : ContentPage, IQueryAttributable
@@ -63,6 +64,8 @@ public class VisitDetailsData : BindableObject
             }
         }
     }
+
+    public ICommand AddCommand { get; set; }
 
     public VisitDetailsData()
     {
