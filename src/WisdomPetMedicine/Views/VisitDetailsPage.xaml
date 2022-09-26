@@ -2,15 +2,39 @@
 <ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="WisdomPetMedicine.Views.VisitDetailsPage"
+             xmlns:views="clr-namespace:WisdomPetMedicine.Views"
              Title="VisitDetailsPage">
-    <HorizontalStackLayout VerticalOptions="Center">
-        <Stepper Minimum="1"
+
+    <ContentPage.BindingContext>
+        <views:VisitDetailsData />
+    </ContentPage.BindingContext>
+    
+    <Grid ColumnDefinitions="*,*">
+        <VerticalStackLayout>
+            <Picker ItemsSource="{Binding Products}"
+                    SelectedItem="{Binding SelectedProduct, Mode=TwoWay}" />
+
+            <HorizontalStackLayout VerticalOptions="Center">
+                <Stepper Minimum="1"
                  Maximum="100"
                  Increment="1"
-                 x:Name="quantity" />
-        <Label 
-            VerticalOptions="Center"
-            Margin="4"
-            Text="{Binding Value, Source={x:Reference Name=quantity}}" />
-    </HorizontalStackLayout>
+                 x:Name="quantity"
+                         Value="{Binding Quantity, Mode=TwoWay}" />
+                <Label 
+                VerticalOptions="Center"
+                Margin="4"
+                Text="{Binding Value, Source={x:Reference Name=quantity}}" />
+            </HorizontalStackLayout>
+        </VerticalStackLayout>
+
+        <VerticalStackLayout Grid.Column="1">
+            <Label Text="Nombre" />
+            <Label />
+            <Label Text="Descripción" />
+            <Label />
+            <Label Text="Precio" />
+            <Label />
+        </VerticalStackLayout>
+
+    </Grid>
 </ContentPage>
