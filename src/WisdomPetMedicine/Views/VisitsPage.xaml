@@ -5,22 +5,17 @@
              xmlns:views="clr-namespace:WisdomPetMedicine.Views"
              Title="VisitsPage">
 
-    <ContentPage.Resources>
-        <views:VisitsData x:Key="data" RemainingVisits="2" />
-    </ContentPage.Resources>
+    <ContentPage.BindingContext>
+        <views:VisitsData RemainingVisits="2" />
+    </ContentPage.BindingContext>
 
     <Grid RowDefinitions="Auto,*">
-        <Label Text="{Binding 
-                        Source={StaticResource data}, 
-                        Path=Clients.Count, 
-                        Mode=OneWay}"
+
+        <Label Text="{Binding Clients.Count, Mode=OneWay}"
                FontSize="30" />
 
         <CollectionView 
             Grid.Row="1"
-            ItemsSource="{Binding 
-                        Source={StaticResource data}, 
-                        Path=Clients, 
-                        Mode=OneWay}" />
+            ItemsSource="{Binding Clients, Mode=OneWay}" />
     </Grid>
 </ContentPage>
