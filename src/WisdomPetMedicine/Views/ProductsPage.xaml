@@ -2,6 +2,14 @@
 <ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="WisdomPetMedicine.Views.ProductsPage"
+             xmlns:handlers="clr-namespace:WisdomPetMedicine.Handlers"
              Title="ProductsPage">
+
+    <Shell.SearchHandler>
+        <handlers:ProductSearchHandler Placeholder="Buscar productos..."
+                                       DisplayMemberName="Name"
+                                       ShowsResults="True" />
+    </Shell.SearchHandler>
+    
     <VerticalStackLayout x:Name="data" />
 </ContentPage>
