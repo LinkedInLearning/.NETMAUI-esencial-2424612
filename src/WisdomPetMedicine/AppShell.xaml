@@ -58,4 +58,7 @@
 
     </FlyoutItem>
 
+    <MenuItem Text="Abrir página web..."
+              Clicked="MenuItem_Clicked"
+              />
 </Shell>
