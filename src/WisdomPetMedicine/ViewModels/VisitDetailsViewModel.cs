@@ -24,10 +24,11 @@ public partial class VisitDetailsViewModel : ViewModelBase, IQueryAttributable
 
     [ObservableProperty]
     private ObservableCollection<Sale> sales = new ObservableCollection<Sale>();
+    private readonly IConnectivity connectivity;
 
     public ICommand AddCommand { get; set; }
 
-    public VisitDetailsViewModel()
+    public VisitDetailsViewModel(IConnectivity connectivity)
     {
         var db = new WpmDbContext();
         Products = new ObservableCollection<Product>(db.Products);
@@ -42,6 +43,13 @@ public partial class VisitDetailsViewModel : ViewModelBase, IQueryAttributable
                 SelectedProduct.Price * Quantity);
             Sales.Add(sale);
         }, () => true);
+        this.connectivity = connectivity;
+        connectivity.ConnectivityChanged += Connectivity_ConnectivityChanged;
+    }
+
+    private void Connectivity_ConnectivityChanged(object sender, ConnectivityChangedEventArgs e)
+    {
+        FinishSaleCommand.NotifyCanExecuteChanged();
     }
 
     public void ApplyQueryAttributes(IDictionary<string, object> query)
@@ -57,9 +65,14 @@ public partial class VisitDetailsViewModel : ViewModelBase, IQueryAttributable
         Sales.Remove(sale);
     }
 
-    [RelayCommand]
+    private bool CanFinishSale()
+    {
+        return connectivity.NetworkAccess == NetworkAccess.Internet;
+    }
+
+    [RelayCommand(CanExecute = nameof(CanFinishSale))]
     private void FinishSale()
     {
-
+ 
     }
 }

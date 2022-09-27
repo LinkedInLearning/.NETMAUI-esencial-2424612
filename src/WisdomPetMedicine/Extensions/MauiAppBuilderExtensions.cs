@@ -19,6 +19,7 @@ public static class MauiAppBuilderExtensions
         builder.Services.AddTransient<ProductsViewModel>();
         builder.Services.AddTransient<ProductDetailsPage>();
         builder.Services.AddTransient<ProductDetailsViewModel>();
+        builder.Services.AddSingleton(Connectivity.Current);
 
         var dbContext = new WpmDbContext();
         dbContext.Database.EnsureCreated();
