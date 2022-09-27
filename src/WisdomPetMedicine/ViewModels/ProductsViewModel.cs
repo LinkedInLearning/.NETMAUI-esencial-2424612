@@ -18,11 +18,22 @@ public partial class ProductsViewModel : ViewModelBase
     [ObservableProperty]
     Product selectedProduct;
 
+    [ObservableProperty]
+    bool isRefreshing;
+
     public ProductsViewModel(INavigationService navigationService)
     {
         this.navigationService = navigationService;
         LoadProducts();
         PropertyChanged += ProductsViewModel_PropertyChanged;
+    }
+
+    [RelayCommand]
+    private async Task Refresh()
+    {
+        LoadProducts();
+        await Task.Delay(3000);
+        IsRefreshing = false;
     }
 
     private async void ProductsViewModel_PropertyChanged(object sender, System.ComponentModel.PropertyChangedEventArgs e)
