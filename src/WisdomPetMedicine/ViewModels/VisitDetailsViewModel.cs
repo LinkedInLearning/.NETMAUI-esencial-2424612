@@ -56,4 +56,10 @@ public partial class VisitDetailsViewModel : ViewModelBase, IQueryAttributable
     {
         Sales.Remove(sale);
     }
+
+    [RelayCommand]
+    private void FinishSale()
+    {
+
+    }
 }

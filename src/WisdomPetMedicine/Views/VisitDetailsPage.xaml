@@ -5,37 +5,36 @@
              xmlns:vm="clr-namespace:WisdomPetMedicine.ViewModels"
              Title="VisitDetailsPage">
 
-    <Grid RowDefinitions="*,Auto,*">
+    <Grid RowDefinitions="*,Auto,*,Auto" Padding="4">
         <Grid ColumnDefinitions="*,*">
-            <VerticalStackLayout>
-                <CollectionView ItemsSource="{Binding Products}"
+            <CollectionView ItemsSource="{Binding Products}"
                             SelectedItem="{Binding SelectedProduct, Mode=TwoWay}"
                             ItemTemplate="{StaticResource ProductDataTemplate}"
-                            SelectionMode="Single"
-                            HeightRequest="300"
-                            />
+                            SelectionMode="Single" />
+            
+            <Grid RowDefinitions="*,Auto"
+                  Grid.Column="1">
+                <VerticalStackLayout>
+                    <Label Text="Nombre" FontAttributes="Bold" />
+                    <Label Text="{Binding SelectedProduct.Name}" />
+                    <Label Text="Descripción" FontAttributes="Bold" />
+                    <Label Text="{Binding SelectedProduct.Description}" />
+                    <Label Text="Precio" FontAttributes="Bold" />
+                    <Label Text="{Binding SelectedProduct.Price, StringFormat='{0:C}'}" />
+                </VerticalStackLayout>
 
-                <HorizontalStackLayout VerticalOptions="Center">
+                <HorizontalStackLayout Grid.Row="1">
                     <Stepper Minimum="1"
-                 Maximum="100"
-                 Increment="1"
-                 x:Name="quantity"
+                         Maximum="100"
+                         Increment="1"
+                         x:Name="quantity"
                          Value="{Binding Quantity, Mode=TwoWay}" />
                     <Label 
-                VerticalOptions="Center"
-                Margin="4"
-                Text="{Binding Value, Source={x:Reference Name=quantity}}" />
+                        VerticalOptions="Center"
+                        Margin="4"
+                        Text="{Binding Value, Source={x:Reference Name=quantity}}" />
                 </HorizontalStackLayout>
-            </VerticalStackLayout>
-
-            <VerticalStackLayout Grid.Column="1">
-                <Label Text="Nombre" />
-                <Label Text="{Binding SelectedProduct.Name}" />
-                <Label Text="Descripción" />
-                <Label Text="{Binding SelectedProduct.Description}" />
-                <Label Text="Precio" />
-                <Label Text="{Binding SelectedProduct.Price, StringFormat='{0:C}'}" />
-            </VerticalStackLayout>
+            </Grid>
 
         </Grid>
 
@@ -80,5 +79,9 @@
                 </DataTemplate>
             </CollectionView.ItemTemplate>
         </CollectionView>
+
+        <Button Grid.Row="3"
+                Text="Finalizar"
+                Command="{Binding FinishSaleCommand}" />
     </Grid>
 </ContentPage>
