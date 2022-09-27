@@ -7,6 +7,7 @@ using System.Collections.ObjectModel;
 using System.Windows.Input;
 using WisdomPetMedicine.DataAccess;
 using WisdomPetMedicine.Models;
+using WisdomPetMedicine.Services;
 
 public partial class VisitDetailsViewModel : ViewModelBase, IQueryAttributable
 {
@@ -25,10 +26,12 @@ public partial class VisitDetailsViewModel : ViewModelBase, IQueryAttributable
     [ObservableProperty]
     private ObservableCollection<Sale> sales = new ObservableCollection<Sale>();
     private readonly IConnectivity connectivity;
+    private readonly SyncService syncService;
 
     public ICommand AddCommand { get; set; }
 
-    public VisitDetailsViewModel(IConnectivity connectivity)
+    public VisitDetailsViewModel(IConnectivity connectivity,
+        SyncService syncService)
     {
         var db = new WpmDbContext();
         Products = new ObservableCollection<Product>(db.Products);
@@ -44,6 +47,7 @@ public partial class VisitDetailsViewModel : ViewModelBase, IQueryAttributable
             Sales.Add(sale);
         }, () => true);
         this.connectivity = connectivity;
+        this.syncService = syncService;
         connectivity.ConnectivityChanged += Connectivity_ConnectivityChanged;
     }
 
@@ -71,8 +75,13 @@ public partial class VisitDetailsViewModel : ViewModelBase, IQueryAttributable
     }
 
     [RelayCommand(CanExecute = nameof(CanFinishSale))]
-    private void FinishSale()
+    private async Task FinishSale()
     {
- 
+        var result = await syncService.SendDataAsync(Sales);
+        if (result)
+        {
+            /*await Shell.Current.DisplayAlert("Mensaje", 
+                "Sincronización exitosa.", "Aceptar");*/
+        };
     }
 }
