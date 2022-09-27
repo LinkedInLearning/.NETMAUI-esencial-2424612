@@ -27,11 +27,13 @@ public partial class VisitDetailsViewModel : ViewModelBase, IQueryAttributable
     private ObservableCollection<Sale> sales = new ObservableCollection<Sale>();
     private readonly IConnectivity connectivity;
     private readonly SyncService syncService;
+    private readonly WpmOutDbContext outDbContext;
 
     public ICommand AddCommand { get; set; }
 
     public VisitDetailsViewModel(IConnectivity connectivity,
-        SyncService syncService)
+        SyncService syncService,
+        WpmOutDbContext outDbContext)
     {
         var db = new WpmDbContext();
         Products = new ObservableCollection<Product>(db.Products);
@@ -46,8 +48,11 @@ public partial class VisitDetailsViewModel : ViewModelBase, IQueryAttributable
                 SelectedProduct.Price * Quantity);
             Sales.Add(sale);
         }, () => true);
+        
         this.connectivity = connectivity;
         this.syncService = syncService;
+        this.outDbContext = outDbContext;
+
         connectivity.ConnectivityChanged += Connectivity_ConnectivityChanged;
     }
 
@@ -77,11 +82,20 @@ public partial class VisitDetailsViewModel : ViewModelBase, IQueryAttributable
     [RelayCommand(CanExecute = nameof(CanFinishSale))]
     private async Task FinishSale()
     {
-        var result = await syncService.SendDataAsync(Sales);
-        if (result)
+        outDbContext.Database.EnsureCreated();
+
+        foreach (var item in Sales)
         {
-            /*await Shell.Current.DisplayAlert("Mensaje", 
-                "Sincronización exitosa.", "Aceptar");*/
-        };
+            outDbContext.Sales.Add(new SaleItem(
+                item.ClientId,
+                item.ProductId,
+                item.Quantity,
+                item.ProductPrice
+                ));
+        }
+
+        await outDbContext.SaveChangesAsync();
+
+        await Shell.Current.DisplayAlert("Mensaje", "Datos almacenados.", "Aceptar");
     }
 }
