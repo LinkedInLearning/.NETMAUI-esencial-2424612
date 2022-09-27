@@ -3,17 +3,11 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="WisdomPetMedicine.Views.VisitsPage"
              xmlns:vm="clr-namespace:WisdomPetMedicine.ViewModels"
-             Title="VisitsPage">
+             Title="{Binding Clients.Count, StringFormat='Clientes ({0} en total)'}">
 
-    <Grid RowDefinitions="Auto,*">
-
-        <Label Text="{Binding Clients.Count, Mode=OneWay}"
-               FontSize="30" />
-
-        <CollectionView 
-            Grid.Row="1"
+    <CollectionView 
             SelectionMode="Single"
             SelectedItem="{Binding SelectedClient, Mode=TwoWay}"
-            ItemsSource="{Binding Clients, Mode=OneWay}" />
-    </Grid>
+            ItemsSource="{Binding Clients, Mode=OneWay}"
+            ItemTemplate="{StaticResource ClientDataTemplate}" />
 </ContentPage>

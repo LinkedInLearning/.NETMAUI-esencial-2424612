@@ -8,6 +8,16 @@
     <Application.Resources>
         <ResourceDictionary>
             <converters:PriceToColorConverter x:Key="PriceToColorConverter" />
+
+            <DataTemplate x:Key="ClientDataTemplate" x:DataType="data:Client">
+                <VerticalStackLayout Padding="10"
+                                     HeightRequest="100">
+                    <Label Text="{Binding Name}" 
+                               FontSize="Title" />
+                    <Label Text="{Binding Address}" 
+                               FontSize="Subtitle" />
+                </VerticalStackLayout>
+            </DataTemplate>
             
             <DataTemplate x:Key="ProductDataTemplate" x:DataType="data:Product">
                 <Grid ColumnDefinitions="*,Auto" Padding="4" HeightRequest="80">
