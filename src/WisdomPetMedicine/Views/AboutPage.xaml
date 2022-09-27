@@ -1,10 +1,14 @@
 <?xml version="1.0" encoding="utf-8" ?>
 <ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:info="clr-namespace:Microsoft.Maui.ApplicationModel;assembly=Microsoft.Maui.Essentials"
              x:Class="WisdomPetMedicine.Views.AboutPage"
-             Title="AboutPage">
-    <VerticalStackLayout>
-        <Label 
-            Text="Wisdom Pet Medicine" />
+             Title="Acerca de">
+    <VerticalStackLayout VerticalOptions="Center"
+                         HorizontalOptions="Center">
+        <Label Text="Wisdom Pet Medicine" FontSize="Title" />
+        <VerticalStackLayout>
+            <Label Text="{x:Static info:AppInfo.VersionString}" />
+        </VerticalStackLayout>
     </VerticalStackLayout>
 </ContentPage>

@@ -19,6 +19,8 @@ public static class MauiAppBuilderExtensions
         builder.Services.AddTransient<ProductsViewModel>();
         builder.Services.AddTransient<ProductDetailsPage>();
         builder.Services.AddTransient<ProductDetailsViewModel>();
+        builder.Services.AddTransient<DashboardPage>();
+        builder.Services.AddTransient<DashboardViewModel>();
         builder.Services.AddSingleton(Connectivity.Current);
         builder.Services.AddSingleton<SyncService>();
         builder.Services.AddSingleton<IDatabasePathService, DatabasePathService>();
