@@ -13,6 +13,8 @@ public static class MauiAppBuilderExtensions
         builder.Services.AddTransient<VisitsPage>();
         builder.Services.AddTransient<VisitDetailsPage>();
         builder.Services.AddTransient<VisitDetailsViewModel>();
+        builder.Services.AddTransient<ClientsPage>();
+        builder.Services.AddTransient<ClientsViewModel>();
 
         var dbContext = new WpmDbContext();
         dbContext.Database.EnsureCreated();

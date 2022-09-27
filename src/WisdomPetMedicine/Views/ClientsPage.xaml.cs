@@ -1,16 +1,12 @@
-using WisdomPetMedicine.DataAccess;
+using WisdomPetMedicine.ViewModels;
 
 namespace WisdomPetMedicine.Views;
 
 public partial class ClientsPage : ContentPage
 {
-	public ClientsPage()
+	public ClientsPage(ClientsViewModel viewModel)
 	{
 		InitializeComponent();
-        var dbContext = new WpmDbContext();
-        foreach (var item in dbContext.Clients)
-        {
-            data.Children.Add(new Label() { Text = item.Name });
-        }
+		BindingContext = viewModel;
     }
 }
