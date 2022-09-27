@@ -3,5 +3,21 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="WisdomPetMedicine.Views.ClientsPage"
              Title="ClientsPage">
-    <VerticalStackLayout x:Name="data" />
+    <CarouselView ItemsSource="{Binding Clients}"
+                  CurrentItem="{Binding SelectedClient, Mode=TwoWay}">
+        <CarouselView.ItemTemplate>
+            <DataTemplate>
+                <VerticalStackLayout VerticalOptions="Center">
+                    <Image Source="wpmlogo.png"
+                           WidthRequest="200" />
+                    <Label Text="{Binding Name}"
+                           HorizontalOptions="Center"
+                           FontSize="Subtitle"
+                           Margin="10" />
+                    <Label Text="{Binding Address}"
+                           HorizontalOptions="Center" />
+                </VerticalStackLayout>
+            </DataTemplate>
+        </CarouselView.ItemTemplate>
+    </CarouselView>
 </ContentPage>
