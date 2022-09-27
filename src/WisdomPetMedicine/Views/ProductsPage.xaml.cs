@@ -1,13 +1,12 @@
-using WisdomPetMedicine.DataAccess;
+using WisdomPetMedicine.ViewModels;
 
 namespace WisdomPetMedicine.Views;
 
 public partial class ProductsPage : ContentPage
 {
-	public ProductsPage()
+	public ProductsPage(ProductsViewModel viewModel)
 	{
 		InitializeComponent();
-		var dbContext = new WpmDbContext();
-		products.ItemsSource = dbContext.Products;
+		BindingContext = viewModel;
 	}
 }

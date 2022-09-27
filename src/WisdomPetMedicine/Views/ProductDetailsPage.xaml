@@ -3,5 +3,11 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="WisdomPetMedicine.Views.ProductDetailsPage"
              Title="ProductDetailsPage">
-    <VerticalStackLayout x:Name="data" />
+    <VerticalStackLayout Margin="10">
+        <Label Text="{Binding Name}"
+               FontSize="Title" />
+        <Label Text="{Binding Description}" 
+               FontSize="Subtitle" />
+        <Label Text="{Binding Price, StringFormat='{0:C}'}" />
+    </VerticalStackLayout>
 </ContentPage>
