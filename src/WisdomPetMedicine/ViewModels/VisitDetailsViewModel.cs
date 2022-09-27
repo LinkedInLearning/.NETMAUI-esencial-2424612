@@ -1,6 +1,7 @@
 ﻿namespace WisdomPetMedicine.ViewModels;
 
 using CommunityToolkit.Mvvm.ComponentModel;
+using CommunityToolkit.Mvvm.Input;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Windows.Input;
@@ -33,7 +34,12 @@ public partial class VisitDetailsViewModel : ViewModelBase, IQueryAttributable
 
         AddCommand = new Command(() =>
         {
-            var sale = new Sale(ClientId, SelectedProduct.Id, Quantity);
+            var sale = new Sale(ClientId, 
+                SelectedProduct.Id, 
+                SelectedProduct.Name,
+                SelectedProduct.Price,
+                Quantity,
+                SelectedProduct.Price * Quantity);
             Sales.Add(sale);
         }, () => true);
     }
@@ -42,5 +48,12 @@ public partial class VisitDetailsViewModel : ViewModelBase, IQueryAttributable
     {
         var clientId = int.Parse(query["id"].ToString());
         ClientId = clientId;
+    }
+
+
+    [RelayCommand]
+    private void DeleteSale(Sale sale)
+    {
+        Sales.Remove(sale);
     }
 }

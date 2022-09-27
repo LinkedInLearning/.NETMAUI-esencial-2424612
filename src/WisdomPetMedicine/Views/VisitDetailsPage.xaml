@@ -5,10 +5,6 @@
              xmlns:vm="clr-namespace:WisdomPetMedicine.ViewModels"
              Title="VisitDetailsPage">
 
-    <ContentPage.BindingContext>
-        <vm:VisitDetailsViewModel />
-    </ContentPage.BindingContext>
-
     <Grid RowDefinitions="*,Auto,*">
         <Grid ColumnDefinitions="*,*">
             <VerticalStackLayout>
@@ -48,7 +44,41 @@
                 Command="{Binding AddCommand}" />
 
         <CollectionView Grid.Row="2"
-                        ItemsSource="{Binding Sales}"
-                        />
+                        ItemsSource="{Binding Sales}">
+            <CollectionView.ItemTemplate>
+                <DataTemplate>
+                    <SwipeView>
+                        <SwipeView.RightItems>
+                            <SwipeItems>
+                                <SwipeItem Text="Borrar"
+                                           BackgroundColor="LightPink"
+                                           Command="{Binding BindingContext.DeleteSaleCommand,
+                                    Source={x:RelativeSource AncestorType={x:Type ContentPage}}}"
+                                           CommandParameter="{Binding}"
+                                           />
+                            </SwipeItems>
+                        </SwipeView.RightItems>
+
+                        <Grid ColumnDefinitions="*,3*,*,*" 
+                              HeightRequest="60" 
+                              Padding="4">
+
+                            <Label Text="{Binding Quantity}" 
+                                   VerticalTextAlignment="Center" />
+                            <Label Text="{Binding ProductName}"
+                                   Grid.Column="1"
+                                   VerticalTextAlignment="Center" />
+                            <Label Text="{Binding ProductPrice, StringFormat='{0:C}'}"
+                                   Grid.Column="2"
+                                   VerticalTextAlignment="Center" />
+                            <Label Text="{Binding Amount, StringFormat='{0:C}'}"
+                                   Grid.Column="3"
+                                   VerticalTextAlignment="Center" />
+                        </Grid>
+
+                    </SwipeView>
+                </DataTemplate>
+            </CollectionView.ItemTemplate>
+        </CollectionView>
     </Grid>
 </ContentPage>
