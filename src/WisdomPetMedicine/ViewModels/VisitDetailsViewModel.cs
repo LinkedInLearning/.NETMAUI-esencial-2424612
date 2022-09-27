@@ -1,12 +1,13 @@
 ﻿namespace WisdomPetMedicine.ViewModels;
 
 using CommunityToolkit.Mvvm.ComponentModel;
+using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Windows.Input;
 using WisdomPetMedicine.DataAccess;
 using WisdomPetMedicine.Models;
 
-public partial class VisitDetailsViewModel : ViewModelBase
+public partial class VisitDetailsViewModel : ViewModelBase, IQueryAttributable
 {
     public int ClientId { get; set; }
 
@@ -35,5 +36,11 @@ public partial class VisitDetailsViewModel : ViewModelBase
             var sale = new Sale(ClientId, SelectedProduct.Id, Quantity);
             Sales.Add(sale);
         }, () => true);
+    }
+
+    public void ApplyQueryAttributes(IDictionary<string, object> query)
+    {
+        var clientId = int.Parse(query["id"].ToString());
+        ClientId = clientId;
     }
 }

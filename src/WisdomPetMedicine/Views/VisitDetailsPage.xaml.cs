@@ -1,17 +1,11 @@
 using WisdomPetMedicine.ViewModels;
 
 namespace WisdomPetMedicine.Views;
-public partial class VisitDetailsPage : ContentPage, IQueryAttributable
+public partial class VisitDetailsPage : ContentPage
 {
-	public VisitDetailsPage()
+	public VisitDetailsPage(VisitDetailsViewModel viewModel)
 	{
 		InitializeComponent();
-	}
-
-	public void ApplyQueryAttributes(IDictionary<string, object> query)
-	{
-        var clientId = int.Parse(query["id"].ToString());
-        Title = $"Cliente: {clientId}";
-        (BindingContext as VisitDetailsViewModel).ClientId = clientId;
+		BindingContext = viewModel;
 	}
 }
