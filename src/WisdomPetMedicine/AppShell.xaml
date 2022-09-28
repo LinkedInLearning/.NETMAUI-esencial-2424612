@@ -68,6 +68,11 @@
         ContentTemplate="{DataTemplate views:VisitsPage}"
         Route="VisitsPage" />
 
+    <ShellContent
+        Title="Sincronizar"
+        ContentTemplate="{DataTemplate views:SyncPage}"
+        Route="SyncPage" />
+
     <MenuItem Text="Abrir página web..."
               Clicked="MenuItem_Clicked"
               />

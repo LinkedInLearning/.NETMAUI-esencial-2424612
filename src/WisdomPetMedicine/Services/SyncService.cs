@@ -9,13 +9,14 @@ public class SyncService
     {
         client = new HttpClient();
     }
-    public async Task<bool> SendDataAsync(IEnumerable<Sale> sales)
+    public async Task<bool> SendDataAsync(IEnumerable<Sale> sales, string accessToken)
     {
         var uri = "https://wpmapi.azurewebsites.net/sales";
         var body = new
         {
             data = sales
         };
+        client.DefaultRequestHeaders.Add("Authorization", $"Bearer {accessToken}");
         var result = await client.PostAsJsonAsync(uri, body);
         return result.IsSuccessStatusCode;
     }

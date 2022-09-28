@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:converters="clr-namespace:WisdomPetMedicine.Converters"
+             x:Class="WisdomPetMedicine.Views.SyncPage"
+             Title="SyncPage">
+    <ContentPage.Resources>
+        <converters:InvertedBoolConverter x:Key="InvertedBoolConverter" />
+    </ContentPage.Resources>
+
+    <Grid>
+        <VerticalStackLayout VerticalOptions="Center"
+                             HorizontalOptions="Center"
+                             IsVisible="{Binding IsAuthenticated, Converter={StaticResource InvertedBoolConverter}}">
+            <Label Text="Debe iniciar sesión para poder sincronizar los datos"
+                   FontSize="Subtitle" />
+            <Button
+            Text="Iniciar sesión"
+            Command="{Binding LoginCommand}" />
+        </VerticalStackLayout>
+        
+        <VerticalStackLayout VerticalOptions="Center"
+                             HorizontalOptions="Center"
+                             IsVisible="{Binding IsAuthenticated}">
+            <Label Text="Puede comenzar con el proceso de sincronización"
+                   FontSize="Subtitle" />
+            <Button Text="Enviar datos"
+                Command="{Binding SyncCommand}" />
+            <Label Text="{Binding Message}" />
+        </VerticalStackLayout>
+       
+    </Grid>
+</ContentPage>
