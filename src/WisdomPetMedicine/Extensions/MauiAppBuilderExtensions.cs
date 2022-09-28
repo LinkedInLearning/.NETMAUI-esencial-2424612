@@ -25,6 +25,7 @@ public static class MauiAppBuilderExtensions
         builder.Services.AddSingleton<SyncService>();
         builder.Services.AddSingleton<IDatabasePathService, DatabasePathService>();
         builder.Services.AddDbContext<WpmOutDbContext>();
+        builder.Services.AddSingleton<AuthService>();
 
         var dbContext = new WpmDbContext();
         dbContext.Database.EnsureCreated();
