@@ -7,6 +7,7 @@ Este es el repositorio del curso de LinkedIn Learning `[.NET MAUI esencial]`. El
 Consulta el archivo Readme en la rama main para obtener instrucciones e información actualizadas.
 
 DESCRIPCIÓN DEL CURSO
+
 Aprende con este curso los conceptos fundamentales de .NET MAUI como plataforma de desarrollo, así como una serie de buenas prácticas al momento de construir soluciones con esta tecnología. Durante el contenido explorarás todo lo que tiene que ver con .NET MAUI, como cuáles son sus conceptos esenciales y la arquitectura que tienen este tipo de proyectos. También verás los temas más destacables que son necesarios en prácticamente toda aplicación móvil robusta construida con esta plataforma.
 
 ## Instrucciones
