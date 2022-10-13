@@ -1,12 +1,13 @@
-# Nombre final del curso
+# .NET MAUI esencial
 
-Este es el repositorio del curso de LinkedIn Learning `[nombre del curso]`. El curso completo está disponible en [LinkedIn Learning][lil-course-url].
+Este es el repositorio del curso de LinkedIn Learning `[.NET MAUI esencial]`. El curso completo está disponible en [LinkedIn Learning][lil-course-url].
 
 ![Nombre completo del curso][lil-thumbnail-url][Copy&Past Image from LiL-Buddy] 
 
 Consulta el archivo Readme en la rama main para obtener instrucciones e información actualizadas.
 
 DESCRIPCIÓN DEL CURSO
+Aprende con este curso los conceptos fundamentales de .NET MAUI como plataforma de desarrollo, así como una serie de buenas prácticas al momento de construir soluciones con esta tecnología. Durante el contenido explorarás todo lo que tiene que ver con .NET MAUI, como cuáles son sus conceptos esenciales y la arquitectura que tienen este tipo de proyectos. También verás los temas más destacables que son necesarios en prácticamente toda aplicación móvil robusta construida con esta plataforma.
 
 ## Instrucciones
 
@@ -26,9 +27,9 @@ Las ramas están estructuradas para corresponder a los vídeos del curso. La con
 
 ### Docente
 
-**Nombre del docente**
+**Rodrigo Díaz Concha**
 
-Echa un vistazo a mis otros cursos en [LinkedIn Learning](https://www.linkedin.com/learning/instructors/).
+Echa un vistazo a mis otros cursos en [LinkedIn Learning](https://www.linkedin.com/learning/instructors/rodrigo-diaz-concha).
 
 [0]: # (Replace these placeholder URLs with actual course URLs)
 [lil-course-url]: https://www.linkedin.com/learning/building-a-graphql-project-with-react-js
