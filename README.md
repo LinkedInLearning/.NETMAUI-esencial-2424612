@@ -19,10 +19,11 @@ Las ramas están estructuradas para corresponder a los vídeos del curso. La con
 ## Instalación
 
 1. Para utilizar estos archivos de ejercicios, debes tener descargado lo siguiente:
-   - [software]
+   - Visual Studio 2022 con la carga de trabajo de .NET MAUI instalada
 
-2. Clona este repositorio en tu máquina local usando la Terminal (macOS) o CMD (Windows), o una herramienta GUI como SourceTree.
-3. [Instrucciones específicas del curso].
+2. Clona este repositorio en tu máquina local usando la Terminal (macOS) o CMD (Windows), o una herramienta GUI como SourceTree.  El siguiente ejemplo, clona el repositorio usando la herramienta de línea de comandos de Git:
+
+    ```git clone https://github.com/LinkedInLearning/.NETMAUI-esencial-2424612.git```
 
 ### Docente
 
